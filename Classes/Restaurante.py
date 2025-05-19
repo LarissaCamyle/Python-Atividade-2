@@ -1,7 +1,7 @@
 from Classes.Avaliacao import Avaliacao
 
 class Restaurante:
-    """Clase Restaurante"""
+    """Classe Restaurante"""
 
     #armazena todos os restaurantes
     restaurantes = []
