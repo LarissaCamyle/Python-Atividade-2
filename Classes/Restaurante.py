@@ -1,4 +1,5 @@
 from Classes.Avaliacao import Avaliacao
+from Classes.Cardapio.Item_cardapio import ItemCardapio
 
 class Restaurante:
     """Classe Restaurante"""
@@ -20,6 +21,7 @@ class Restaurante:
         self._status = False
 
         self._avaliacoes = []
+        self.cardapio_do_restaurante = []
 
         #adiciona a lista
         Restaurante.restaurantes.append(self)
@@ -80,3 +82,18 @@ class Restaurante:
             return media
 
 
+    def adicionar_no_cardapio(self, item):
+        """Adiciona itens ao cardapio"""
+        #verifica se o item é do tipo classe filho da classe pai item cardapio
+        if isinstance(item, ItemCardapio):
+            self.cardapio_do_restaurante.append(item)
+
+    @property
+    def listar_o_cardapio(self):
+        print(f"Cardápio do Restaurante {self._nome}\n")
+
+        print(f'{" NÚMERO DO ITEM".ljust(20)}  {" NOME".ljust(20)}  {" PREÇO".ljust(20)}')
+                                #lista                         comeca a contar do 1
+        for i, item in enumerate(self.cardapio_do_restaurante, start=1):
+            item = f'{str(i).ljust(20)} | {str(item._nome).ljust(20)} | R${str(item._preco).ljust(20)}'
+            print(item)
